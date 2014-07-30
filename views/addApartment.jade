@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	h1 Add an Apartment
+	form(action='/apartments/add', method='POST')
+		p Address
+		input(type='text', name='address')
+		p Address Line 2
+		input(type='text', name='address2')
+		p City
+		input(type='text', name='city')
+		p State
+		input(type='text', name='state')
+		p Zip
+		input(type='text', name='zip')
+		button(type='submig') Submit

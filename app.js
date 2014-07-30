@@ -4,6 +4,10 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var scrypt = require('scrypt');
+var scryptParameters = scrypt.params(0.1);
+var db = require('./lib/db');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -13,6 +17,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch', saveUninitialized: true, resave: true, cookie: {maxAge: 60000} })); // session secret
 
 app.use(favicon());
 app.use(logger('dev'));
