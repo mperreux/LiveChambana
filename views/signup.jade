@@ -19,8 +19,14 @@ block content
 			.form-group
 				label(for='confirmpassword') Confirm Password		
 				input(id='confirmpassword', type='password', name='confirmpassword', class='form-control')
-			button(type='submit' class='btn btn-default') Submit
-		#errors
-			if errors.length > 0
+			button(type='submit' class='btn btn-primary') Submit
+		//- form(action='/signup', method='POST')
+		//- 	paper-input(label='First Name', name='firstname', floatingLabel)
+		//- 	paper-input(label='Last Name', name='lastname', floatingLabel)
+		//- 	paper-input(label='Email Adress', type='email', name='email', floatingLabel)
+		//- 	paper-input(label='Password', type='password' name='password', floatingLabel)
+		//- 	paper-input(label='Confirm Password', type='password', name='confirmpassword', floatingLabel)
+		if errors.length > 0
+			div(class='alert alert-danger' role='alert')
 				each error in errors
 					p #{error}

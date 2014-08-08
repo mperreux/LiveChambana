@@ -6,12 +6,17 @@ block content
 		form(action='/login', method='POST', role='form')
 			.form-group
 				label(for='email') Email address
-				input(id='email', type='text', name='email', class='form-control')
+				input(id='email', type='email', name='email', class='form-control')
 			.form-group
 				label(for='password') Password		
 				input(id='password', type='password', name='password', class='form-control')
 			button(type='submit' class='btn btn-primary') Submit
-		#errors
-			if errors.length > 0
+
+		//- form(action='/login', method='POST', role='form')
+		//- 	paper-input(label='Email Address', name='email', floatingLabel)
+		//- 	paper-input(label='Password', name='email', type='password' floatingLabel)
+		//- 	paper-button(label='Submit', type='submit', raisedButton)
+		if errors.length > 0
+			div(class='alert alert-danger' role='alert')
 				each error in errors
 					p #{error}

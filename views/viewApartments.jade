@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-sm-2
+                .card
+                    h3 Refine
+            .col-sm-10
+                if locations.length > 0
+                    each location in locations
+                        .card
+                            .row
+                                .col-sm-3
+                                    img(src="http://placehold.it/150x150")
+                                .col-sm-2
+                                    h3 #{location.address}
+                                    p #{location.city}, #{location.state}
+                                    p #{location.type}
+                                .col-sm-2
+                                    h3 
+                                        $#{location.rent}
+                                        span.light 
+                                            /month
+                                    p #{location.available}

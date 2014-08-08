@@ -2,23 +2,45 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    //link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,700,900,400italic', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/components/platform/platform.js')
+    link(rel='import', href='/components/paper-elements/paper-elements.html')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
   body
     nav(class='navbar navbar-default navbar-fixed-top', role='navigation')
         .container
             .navbar-header
                 a(class='navbar-brand', href='/') LiveChambana
-            div(class='nav navbar-nav navbar-right')
+            div(class='nav navbar-nav navbar-left')
                 ul(class='nav navbar-nav')
                     li
-                        a(href='/login') Login
+                        a(href='/apartments/view') <i class='fa fa-eye'></i> Find a Place
                     li
-                        a(href='/signup') Sign Up
+                        a(href='/apartments/add') <i class='fa fa-plus'></i> Add a Place
+            div(class='nav navbar-nav navbar-right')
+                ul(class='nav navbar-nav')
+                    if user != undefined
+                        li.dropdown
+                            a.dropdown-toggle(href='#', data-toggle="dropdown") #{user} <span class="caret"></span>
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(href="/profile") <i class='fa fa-user'></i> Profile
+                                li
+                                    a(href='/logout') <i class='fa fa-sign-out'></i> Logout
+                    else
+                        li
+                            a(href='/signup') Register
+                        li
+                            a(href='/login') Login
                     li
-                        a(href='/profile') Profile
+                        a(href='http://facebook.com') <i class='fa fa-facebook'></i>
                     li
-                        a(href='/logout') Logout
-    .container
-        block content
-        block scripts
+                        a(href='http://twitter.com') <i class='fa fa-twitter'></i>
+    block content
+    include footer
+    include scripts

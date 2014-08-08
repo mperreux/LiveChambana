@@ -1,16 +1,51 @@
 extends layout
 
 block content
-	h1 Add an Apartment
-	form(action='/apartments/add', method='POST')
-		p Address
-		input(type='text', name='address')
-		p Address Line 2
-		input(type='text', name='address2')
-		p City
-		input(type='text', name='city')
-		p State
-		input(type='text', name='state')
-		p Zip
-		input(type='text', name='zip')
-		button(type='submig') Submit
+	.login-form
+		h3 Add An Apartment
+		form(action='/apartments/add', method='POST', role='form')
+			.form-group
+				label(for='type') Apartment or House	
+				select(id='type' class='selectpicker form-control show-menu-arrow' data-live-search='true' name='type')
+					option(value='Apartment') Apartment
+					option(value='House') House
+			.form-group
+				label(for='address') Address
+				input(id='address', type='text', name='address', class='form-control')
+			.form-group
+				label(for='address2') Address Line 2		
+				input(id='address2', type='text', name='address2', class='form-control')
+			.form-group
+				label(for='city') City		
+				select(id='city' class='selectpicker form-control show-menu-arrow' data-live-search='true' name='city')
+					option(value='Champaign') Champaign
+					option(value='Urbana') Urbana
+			.form-group
+				label(for='state') State		
+				select(id='state' class='selectpicker form-control show-menu-arrow' data-live-search='true' name='state')
+					option(value='IL') Illinois
+			.form-group
+				label(for='zip') ZIP		
+				input(id='zip', type='text', name='zip', class='form-control')
+			.form-group
+				label(for='rent') Rent per month		
+				input(id='rent', type='text', name='rent', class='form-control')
+			.form-group
+				label(for='available') Term Available		
+				select(id='available' class='selectpicker form-control show-menu-arrow' data-live-search='true' name='available')
+					option(value='Fall 2014') Fall 2014
+					option(value='Spring 2015') Spring 2015
+					option(value='Summer 2015') Summer 2015
+					option(value='Academic Year 2014-2015') Summer 2015
+			.form-group
+				label(for='leaseOrSublease') List as Sublease or Lease		
+				select(id='leaseOrSublease' class='selectpicker form-control show-menu-arrow' data-live-search='true' name='leaseOrSublease')
+					option(value='Sublease') Sublease
+					option(value='Lease') Lease
+			.form-group
+				label(for='totalBedrooms') Total Bedrooms		
+				input(id='totalBedrooms', type='text', name='totalBedrooms', class='form-control')
+			.form-group
+				label(for='availableBedrooms') Available Bedrooms		
+				input(id='availableBedrooms', type='text', name='availableBedrooms', class='form-control')
+			button(type='submit' class='btn btn-primary') Submit
