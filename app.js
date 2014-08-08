@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var scrypt = require('scrypt');
+var express          = require('express');
+var path             = require('path');
+var favicon          = require('static-favicon');
+var logger           = require('morgan');
+var cookieParser     = require('cookie-parser');
+var bodyParser       = require('body-parser');
+var session          = require('express-session');
+var scrypt           = require('scrypt');
 var scryptParameters = scrypt.params(0.1);
-var db = require('./lib/db');
+var db               = require('./lib/db');
+var expressValidator = require('express-validator');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -18,12 +19,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch', saveUninitialized: true, resave: true, cookie: {maxAge: 60000} })); // session secret
-
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch', saveUninitialized: true, resave: true, cookie: {maxAge: 1800000} })); // session secret
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
